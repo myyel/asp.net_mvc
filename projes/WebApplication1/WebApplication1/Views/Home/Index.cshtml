@@ -3,5 +3,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@Html.Partial("_yapi")
+
+<h2>Personeller</h2>
+<hr />
+@{ 
+    string[] personeller = { "Mehmet Yasin Yel", "İsmet Yıldız", "Yasemin Yel", "Güngör Yel", "Nejdet Yıldız" };
+}
+<ul>
+
+    @foreach (var personel in personeller)
+    {
+        <li>@personel</li>
+    }
+</ul>
 
