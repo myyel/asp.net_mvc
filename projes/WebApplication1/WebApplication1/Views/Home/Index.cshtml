@@ -1,4 +1,5 @@
-﻿
+﻿@model List<WebApplication1.Models.urun>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -7,14 +8,15 @@
 
 <h2>Personeller</h2>
 <hr />
-@{ 
-    string[] personeller = { "Mehmet Yasin Yel", "İsmet Yıldız", "Yasemin Yel", "Güngör Yel", "Nejdet Yıldız" };
-}
+@ViewBag.urun_sayisi 
+adet ürün listelendi...
+<hr />
+@foreach (var urun in Model)
+{
 <ul>
-
-    @foreach (var personel in personeller)
-    {
-        <li>@personel</li>
-    }
+    <li>@urun.urun_adi</li>
+    <li>@urun.fiyat</li>
+    <li>@urun.aciklama</li>
 </ul>
+ }
 
