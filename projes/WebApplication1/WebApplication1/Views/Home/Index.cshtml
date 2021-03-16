@@ -8,15 +8,23 @@
 
 <h2>Personeller</h2>
 <hr />
-@ViewBag.urun_sayisi 
+@ViewBag.urun_sayisi
 adet ürün listelendi...
 <hr />
 @foreach (var urun in Model)
 {
-<ul>
-    <li>@urun.urun_adi</li>
-    <li>@urun.fiyat</li>
-    <li>@urun.aciklama</li>
-</ul>
- }
+    <ul>
+        <li>@urun.urun_adi</li>
+        <li>@urun.fiyat</li>
+        <li>@urun.aciklama</li>
+    </ul>
+}
 
+<hr />
+
+@foreach (var kategori in ViewBag.kategoriler)
+{
+    <ul>
+        <li>@kategori.kategori_adi</li>
+    </ul>
+}

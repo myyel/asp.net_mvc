@@ -1,0 +1,37 @@
+﻿@using WebApplication1.Models;
+@model urun_kategori
+@{
+    ViewBag.Title = "Urun";
+}
+
+@Html.Partial("_yapi")
+
+<h2>Personeller</h2>
+<hr />
+@ViewBag.urun_sayisi
+adet ürün listelendi...
+<hr />
+<div class="container">
+    <div class="col-md-4">
+        @foreach (var kategori in Model.kategoriler)
+        {
+            <ul>
+                <li>@kategori.kategori_adi</li>
+            </ul>
+        }
+        <hr />
+    </div>
+
+    <div class="col-md-4">
+        @foreach (var urun in Model.urunler)
+        {
+            <ul>
+                <li>@urun.urun_adi</li>
+                <li>@urun.fiyat</li>
+                <li>@urun.aciklama</li>
+            </ul>
+        }
+
+    </div>
+</div>
+
