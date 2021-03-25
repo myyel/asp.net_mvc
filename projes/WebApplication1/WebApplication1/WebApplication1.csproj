@@ -111,6 +111,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_yapi.cshtml" />
     <Content Include="Views\Home\Urun.cshtml" />
+    <Content Include="Views\Home\UrunEkle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

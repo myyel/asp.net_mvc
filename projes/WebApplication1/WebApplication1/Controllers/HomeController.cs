@@ -66,5 +66,16 @@ namespace WebApplication1.Controllers
 
             return View(model);
         }
+
+        public ActionResult UrunEkle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UrunEkle(urun entity)
+        {
+            return View(entity);
+        }
     }
 }
