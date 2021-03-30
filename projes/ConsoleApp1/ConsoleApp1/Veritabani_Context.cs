@@ -11,7 +11,7 @@ namespace ConsoleApp1
     {
         public Veritabani_Context():base("VeritabaniConnection")
         {
-
+            Database.SetInitializer(new VeriInitializer());
         }
 
         public DbSet<Kategori> kategoriler { get; set; }

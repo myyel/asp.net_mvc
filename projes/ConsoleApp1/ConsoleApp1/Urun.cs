@@ -13,5 +13,7 @@ namespace ConsoleApp1
         public double fiyat { get; set; }
         public int stok_adeti { get; set; }
         public bool satista { get; set; }
+        public int KategoriId { get; set; }
+        public Kategori Kategori { get; set; }
     }
 }
