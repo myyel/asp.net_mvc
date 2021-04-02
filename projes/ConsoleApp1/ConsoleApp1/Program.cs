@@ -10,26 +10,20 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Veritabani_Context veri = new Veritabani_Context();
-            List<Urun> urunler = new List<Urun>()
-            {
-                new Urun(){urun_adi="samsung", fiyat=5000, stok_adeti=200, satista=true, KategoriId=1},
-                new Urun(){urun_adi="iphone", fiyat=8000, stok_adeti=200, satista=false, KategoriId=1} 
-            };
+            Veritabani_Context yol = new Veritabani_Context();
 
-            Kategori kats = new Kategori();
-            kats.kategori_adi = "telefon";
-
-            veri.kategoriler.Add(kats);
-
+            var urunler = yol.urunler.Select(
+                i => new
+                {
+                    urun_adi = i.urun_adi,
+                    fiyat=i.fiyat,
+                    kategori=i.Kategori.kategori_adi
+                });
             foreach (var item in urunler)
             {
 
-                veri.urunler.Add(item);
+                Console.WriteLine("urun adı: {0}  fiyat: {1}  kategori: {2}", item.urun_adi, item.fiyat, item.kategori);
             }
-            veri.SaveChanges();
-
-            Console.WriteLine("database created");
 
             Console.ReadLine();
         }
