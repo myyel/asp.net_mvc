@@ -10,22 +10,18 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Veritabani_Context yol = new Veritabani_Context();
+            Veritabani_Context db = new Veritabani_Context();
 
-            var urunler = yol.urunler.Select(
-                i => new
-                {
-                    urun_adi = i.urun_adi,
-                    fiyat=i.fiyat,
-                    kategori=i.Kategori.kategori_adi
-                });
-            foreach (var item in urunler)
+            var urun = db.urunler.OrderBy(i => new { i.urun_adi, i.Id }).Take(6).ToList();
+
+            foreach (var item in urun)
             {
-
-                Console.WriteLine("urun adı: {0}  fiyat: {1}  kategori: {2}", item.urun_adi, item.fiyat, item.kategori);
+                Console.WriteLine(item.urun_adi+" "+item.fiyat);
             }
 
-            Console.ReadLine();
+
+            Console.ReadLine(); 
         }
     }
 }
+    
