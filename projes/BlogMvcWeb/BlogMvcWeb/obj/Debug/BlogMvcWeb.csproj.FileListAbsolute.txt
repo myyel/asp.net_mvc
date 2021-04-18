@@ -70,3 +70,7 @@ D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\obj\Debug\BlogMvcWeb.cspr
 D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\obj\Debug\BlogMvcWeb.csproj.CopyComplete
 D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\obj\Debug\BlogMvcWeb.dll
 D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\obj\Debug\BlogMvcWeb.pdb
+D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\bin\EntityFramework.dll
+D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\bin\EntityFramework.SqlServer.dll
+D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\bin\EntityFramework.xml
+D:\masaüstü\asp.net_mvc\projes\BlogMvcWeb\BlogMvcWeb\bin\EntityFramework.SqlServer.xml

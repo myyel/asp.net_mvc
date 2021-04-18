@@ -1,6 +1,11 @@
-﻿
+﻿@model IEnumerable<BlogMvcWeb.Models.Blog>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Blog Başlıkları</h2>
+<hr />
+@foreach (var item in Model)
+{
+    <button class="bg-secondary text-danger">@item.baslik</button>
+}
