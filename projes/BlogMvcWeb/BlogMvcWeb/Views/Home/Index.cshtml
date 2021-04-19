@@ -1,11 +1,29 @@
-﻿@model IEnumerable<BlogMvcWeb.Models.Blog>
+﻿@model IEnumerable<BlogMvcWeb.Models.BlogAnasayfa>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Blog Başlıkları</h2>
+<h2>Blog Listesi</h2>
 <hr />
-@foreach (var item in Model)
-{
-    <button class="bg-secondary text-danger">@item.baslik</button>
-}
+
+<div class="row">
+    <div class="col-md-8">
+        @foreach (var item in Model)
+        {
+        <div class="blog">
+            <hr />
+            <img src="~/Content/image/bos.jpg" height="400" width="1000"/>
+            <hr />
+            <h3 class="page-header">@item.baslik</h3>
+            <p>
+                <span class="glyphicon glyphicon-time"></span>
+                @item.ekleme_tarihi
+            </p>
+            <p>
+                @item.aciklama
+            </p>
+            <button class="btn btn-primary">Daha Fazla...</button>
+        </div>
+        }
+    </div>
+</div>

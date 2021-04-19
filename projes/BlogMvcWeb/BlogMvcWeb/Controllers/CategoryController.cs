@@ -17,7 +17,7 @@ namespace BlogMvcWeb.Controllers
         // GET: Category
         public ActionResult Index()
         {
-            return View(db.Kategoriler.ToList());
+            return View(db.Kategoriler.OrderBy(i=>i.kategori_adi).ToList());
         }
 
         // GET: Category/Details/5
@@ -46,7 +46,7 @@ namespace BlogMvcWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,kategori_adi")] Category category)
+        public ActionResult Create([Bind(Include = "kategori_adi")] Category category)
         {
             if (ModelState.IsValid)
             {

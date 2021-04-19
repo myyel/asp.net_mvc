@@ -17,7 +17,7 @@ namespace BlogMvcWeb.Controllers
         // GET: Blog
         public ActionResult Index()
         {
-            var bloglar = db.Bloglar.Include(b => b.category);
+            var bloglar = db.Bloglar.Include(b => b.category).OrderByDescending(i=>i.ekleme_tarihi);
             return View(bloglar.ToList());
         }
 
@@ -48,10 +48,12 @@ namespace BlogMvcWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,baslik,aciklama,resim,icerik,ekleme_tarihi,onay,anasayfa,CategoryId")] Blog blog)
+        public ActionResult Create([Bind(Include = "baslik,aciklama,resim,icerik,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
+                blog.ekleme_tarihi = DateTime.Now;
+              
                 db.Bloglar.Add(blog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
