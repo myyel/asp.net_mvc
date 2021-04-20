@@ -14,6 +14,11 @@ namespace BlogMvcWeb.Controllers
     {
         private BlogContext db = new BlogContext();
 
+
+        public PartialViewResult KategorilerListesi()
+        {
+            return PartialView(db.Kategoriler.ToList());
+        }
         // GET: Category
         public ActionResult Index()
         {
@@ -84,6 +89,7 @@ namespace BlogMvcWeb.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["Kategori"] = category;
                 return RedirectToAction("Index");
             }
             return View(category);

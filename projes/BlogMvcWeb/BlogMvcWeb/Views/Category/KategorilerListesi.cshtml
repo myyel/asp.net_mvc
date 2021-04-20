@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BlogMvcWeb.Models.Category>
+
+<div class="well">
+    <h4>Blog Kategorileri</h4>
+    <div class="row">
+        @foreach (var item in @Model)
+        {
+            <div class="col-md-6">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#">@item.kategori_adi</a>
+                    </li>
+                </ul>
+            </div>
+        }
+    </div>
+</div>

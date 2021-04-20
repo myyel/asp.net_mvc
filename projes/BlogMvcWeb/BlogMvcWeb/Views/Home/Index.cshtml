@@ -10,20 +10,20 @@
     <div class="col-md-8">
         @foreach (var item in Model)
         {
-        <div class="blog">
-            <hr />
-            <img src="~/Content/image/bos.jpg" height="400" width="1000"/>
-            <hr />
-            <h3 class="page-header">@item.baslik</h3>
-            <p>
-                <span class="glyphicon glyphicon-time"></span>
-                @item.ekleme_tarihi
-            </p>
-            <p>
-                @item.aciklama
-            </p>
-            <button class="btn btn-primary">Daha Fazla...</button>
-        </div>
+            <div class="blog">
+                <hr />
+                <img src="~/Content/image/bos.jpg" height="400" width="1000" />
+                <hr />
+                <h3 class="page-header">@item.baslik</h3>
+                <p>
+                    <span class="glyphicon glyphicon-time"></span>
+                    @item.ekleme_tarihi
+                </p>
+                <p>
+                    @item.aciklama
+                </p>
+                @Html.ActionLink("Daha Fazla...", "Details", "Blog", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </div>
         }
     </div>
 </div>

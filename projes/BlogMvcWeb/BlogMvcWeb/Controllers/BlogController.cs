@@ -84,12 +84,22 @@ namespace BlogMvcWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,baslik,aciklama,resim,icerik,ekleme_tarihi,onay,anasayfa,CategoryId")] Blog blog)
+        public ActionResult Edit([Bind(Include = "Id,baslik,aciklama,resim,icerik,onay,anasayfa,CategoryId")] Blog blog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(blog).State = EntityState.Modified;
+                var veri = db.Bloglar.Find(blog.Id);
+                veri.onay = blog.onay;
+                veri.icerik = blog.icerik;
+                veri.aciklama = blog.aciklama;
+                veri.anasayfa = blog.anasayfa;
+                veri.baslik = blog.baslik;
+                veri.CategoryId = blog.CategoryId;
+                veri.resim = blog.resim;
+
                 db.SaveChanges();
+
+                TempData["Blog"] = veri;
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Kategoriler, "Id", "kategori_adi", blog.CategoryId);

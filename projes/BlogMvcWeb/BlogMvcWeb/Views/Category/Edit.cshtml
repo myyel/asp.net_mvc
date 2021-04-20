@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Düzenle</h2>
 
 
 @using (Html.BeginForm())
@@ -18,23 +18,23 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.kategori_adi, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.kategori_adi,  new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.kategori_adi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.kategori_adi,  new { @class = "form-control"  })
                 @Html.ValidationMessageFor(model => model.kategori_adi, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Geri Dön", "Index")
 </div>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>

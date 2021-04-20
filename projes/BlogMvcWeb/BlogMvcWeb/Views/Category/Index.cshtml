@@ -6,10 +6,17 @@
 
 <h2>Kategori Listesi</h2>
 <hr />
+@if (TempData["Kategori"] != null)
+{
+    var i = (BlogMvcWeb.Models.Category)TempData["Kategori"];
 
+    <div class="alert alert-success" role="alert">
+        <strong><span class="glyphicon glyphicon-ok"></span>@i.kategori_adi</strong> değiştirildi...
+    </div>
+}
 
 <p>
-    @Html.ActionLink("Yeni Kategori Ekle", "Create", null, new {@class="btn btn-primary" })
+    @Html.ActionLink("Yeni Kategori Ekle", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <hr />
 <table class="table table-bordered table-hover table-striped">
@@ -20,17 +27,18 @@
         <th style="width:250px"></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.kategori_adi)
-        </td >
-        <td class="text-center">
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-warning btn-xs" }) 
-            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-xs" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.kategori_adi)
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" })
+                @Html.ActionLink("Detay", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+            </td>
+        </tr>
+    }
 
 </table>
