@@ -6,7 +6,7 @@ using System.Web;
 
 namespace UserIdenty.Identity
 {
-    public class IdentityDataContext:IdentityDbContext
+    public class IdentityDataContext:IdentityDbContext<ApplicationUser>
     {
         public IdentityDataContext():base("IdentityConnection")
         {

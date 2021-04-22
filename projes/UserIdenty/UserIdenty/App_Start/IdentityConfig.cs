@@ -4,9 +4,9 @@ using Owin;
 using System;
 using System.Threading.Tasks;
 
-[assembly: OwinStartup(typeof(UserIdenty.App_Start.IdentityConfig))]
+[assembly: OwinStartup(typeof(UserIdenty.IdentityConfig))]
 
-namespace UserIdenty.App_Start
+namespace UserIdenty
 {
     public class IdentityConfig
     {

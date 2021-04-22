@@ -1,0 +1,30 @@
+﻿@model UserIdenty.Models.Register
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Kullanıcı</h2>
+
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(i => i.Username, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        @Html.TextBoxFor(i => i.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Şifre</label>
+        @Html.TextBoxFor(i => i.Password, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+}
+
+
