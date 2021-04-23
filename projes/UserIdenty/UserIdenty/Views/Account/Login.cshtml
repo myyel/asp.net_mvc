@@ -1,0 +1,28 @@
+﻿@model UserIdenty.Models.Login
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Giriş</h2>
+<hr />
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+
+    <div class="form-group">
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(i => i.Username, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Şifre</label>
+        @Html.TextBoxFor(i => i.Password, new { @class = "form-control" })
+    </div>
+    <button class="btn btn-primary" type="submit">Giriş</button>
+}
+
+
