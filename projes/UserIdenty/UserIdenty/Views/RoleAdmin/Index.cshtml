@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rol Listesi</h2>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Roller
+    </div>
+    <table class="table table-striped">
+        <tr>
+            <th>İd</th>
+            <th>İsim</th>
+            <th></th>
+        </tr>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3">Rol Yok</td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "RoleAdmin", new { id = item.Id }))
+                        {
+                            @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-success btn-sm" })
+                            <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                        }
+                    </td>
+                </tr>
+            }
+
+        }
+    </table>
+</div>
+

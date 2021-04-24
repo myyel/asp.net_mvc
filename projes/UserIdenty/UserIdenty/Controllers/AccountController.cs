@@ -19,12 +19,27 @@ namespace UserIdenty.Controllers
         public AccountController()
         {
             userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new IdentityDataContext()));
+
+            userManager.PasswordValidator = new CustomPasswordValidator()
+            {
+                RequireDigit = true,
+                RequiredLength = 8,
+                RequireLowercase = true,
+                RequireNonLetterOrDigit = true,
+                RequireUppercase = true
+            };
+
+            userManager.UserValidator = new UserValidator<ApplicationUser>(userManager)
+            {
+                RequireUniqueEmail = true,
+                AllowOnlyAlphanumericUserNames=false
+            };
         }
         // GET: Account
         public ActionResult Index()
         {
             return View();
-        }
+        } 
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -41,7 +56,7 @@ namespace UserIdenty.Controllers
             if (ModelState.IsValid)
             {
                 var user = userManager.Find(model.Username, model.Password);
-                if (user==null)
+                if (user == null)
                 {
                     ModelState.AddModelError("", "Yanlış Kullanıcı adı ve ya Parola ");
                 }
@@ -56,7 +71,7 @@ namespace UserIdenty.Controllers
                         IsPersistent = true,
                     };
                     authManager.SignOut();
-                    authManager.SignIn(authProperties,identity);
+                    authManager.SignIn(authProperties, identity);
 
                     return Redirect(string.IsNullOrEmpty(returnUrl) ? "/" : returnUrl);
                 }
