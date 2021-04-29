@@ -44,6 +44,10 @@ namespace UserIdenty.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return View("Error", new string[] { "bu alana erişim iznisiz bulunmamaktadır" });
+            }
             ViewBag.returnUrl = returnUrl;
             return View();
         }
@@ -102,6 +106,7 @@ namespace UserIdenty.Controllers
 
                 if (result.Succeeded)
                 {
+                    userManager.AddToRole(user.Id, "Kullanıcı");
                     return RedirectToAction("Login");
                 }
                 else
@@ -122,6 +127,10 @@ namespace UserIdenty.Controllers
             authManager.SignOut();
 
             return RedirectToAction("Login");
+        }
+        public ActionResult Error() 
+        {
+            return View();
         }
     }
 }

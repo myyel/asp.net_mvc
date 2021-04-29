@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "theme", "theme", "{FDF63418-BA06-4303-8043-E31F97587CF1}"
+	ProjectSection(SolutionItems) = preProject
+		Home.html = Home.html
+		Product_details.html = Product_details.html
+		Product_list.html = Product_list.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{1FDC2682-3654-4B17-A11D-CCA14438465A}"
+	ProjectSection(SolutionItems) = preProject
+		style.css = style.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{B536008C-ECEB-449C-8D17-4CAB04220013}"
+	ProjectSection(SolutionItems) = preProject
+		js\holder.min.js = js\holder.min.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "img", "img", "{3C69CC78-8829-4EAE-AAB6-16AC55849982}"
+	ProjectSection(SolutionItems) = preProject
+		img\bg.jpg = img\bg.jpg
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FDC2682-3654-4B17-A11D-CCA14438465A} = {FDF63418-BA06-4303-8043-E31F97587CF1}
+		{B536008C-ECEB-449C-8D17-4CAB04220013} = {FDF63418-BA06-4303-8043-E31F97587CF1}
+		{3C69CC78-8829-4EAE-AAB6-16AC55849982} = {FDF63418-BA06-4303-8043-E31F97587CF1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C7878C6F-FAB2-43EF-81C0-1200870DBC33}
+	EndGlobalSection
+EndGlobal

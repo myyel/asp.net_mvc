@@ -6,16 +6,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UserIdenty.Identity;
+using UserIdenty.Models;
 
 namespace UserIdenty.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class RoleAdminController : Controller
     {
         private RoleManager<IdentityRole> roleManager;
+        private UserManager<ApplicationUser> userManager;
 
         public RoleAdminController()
         {
             roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new IdentityDataContext()));
+            userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new IdentityDataContext()));
         }
         // GET: RoleAdmin
         public ActionResult Index()
@@ -55,7 +59,7 @@ namespace UserIdenty.Controllers
         {
             var role = roleManager.FindById(id);
 
-            if (role!=null)
+            if (role != null)
             {
                 var result = roleManager.Delete(role);
                 if (result.Succeeded)
@@ -71,6 +75,55 @@ namespace UserIdenty.Controllers
             {
                 return View("Error", new string[] { "Rol bulunamadı..." });
             }
+        }
+
+        public ActionResult Edit(string id)
+        {
+            var role = roleManager.FindById(id);
+
+            var members = new List<ApplicationUser>();
+            var nonmembers = new List<ApplicationUser>();
+
+            foreach (var item in userManager.Users.ToList())
+            {
+                var list = userManager.IsInRole(item.Id, role.Name) ? members : nonmembers;
+                list.Add(item);                
+            }
+
+            return View(new RoleEditModel()
+            {
+                Role = role,
+                Members = members,
+                NonMembers = nonmembers
+            });
+        }
+        [HttpPost]
+        public ActionResult Edit(RoleUpdateModel model)
+        {
+            IdentityResult result;
+            if (ModelState.IsValid)
+            {
+                foreach (var item in model.IdsToAdd ?? new string[] { })
+                {
+                    result = userManager.AddToRole(item, model.RoleName);
+                    if (!result.Succeeded)
+                    {
+                        return View("Error", result.Errors);
+                    }
+                }
+
+                foreach (var item in model.IdsToDelete ?? new string[] { })
+                {
+                    result = userManager.RemoveFromRole(item, model.RoleName);
+                    if (!result.Succeeded)
+                    {
+                        return View("Error", result.Errors);
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+
+            return View("Error", new string[] { "aranılan rol yok..." } );
         }
     }
 }
