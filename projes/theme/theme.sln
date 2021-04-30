@@ -12,7 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "theme", "theme", "{FDF63418
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "css", "css", "{1FDC2682-3654-4B17-A11D-CCA14438465A}"
 	ProjectSection(SolutionItems) = preProject
-		style.css = style.css
+		C:\Users\Casper\AppData\Local\Temp\Rar$DRa17356.18435\font-awesome-4.7.0\css\font-awesome.min.css = C:\Users\Casper\AppData\Local\Temp\Rar$DRa17356.18435\font-awesome-4.7.0\css\font-awesome.min.css
+		css\style.css = css\style.css
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{B536008C-ECEB-449C-8D17-4CAB04220013}"
